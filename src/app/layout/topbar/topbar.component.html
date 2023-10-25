@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <p>hjh</p>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" routerLink="/login-page">Features</a>
+        <a class="nav-link" routerLink="/job-page">Job page</a>
+        <div *ngIf="isLoggedIn | async as LoggedIn; then  logoutTemplate else loginTemplate">
+        </div>
+        <ng-template #loginTemplate>
+          <a class="nav-link" routerLink="/login-page">Login</a>
+          <a class="nav-link" routerLink="/register-page">Register</a>
+        </ng-template>
+        <ng-template #logoutTemplate>
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </ng-template>
+      </div>
+      <div style="margin-left: 20%">
+        <form class="d-flex" >
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </div>
+
+    </div>
+    <div>
+      <a class="navbar-brand" href="#">Hi {{role}}</a>
+    </div>
+  </div>
+
+</nav>
+<hr style="width: 95%; margin: 5px auto">
+<br>
