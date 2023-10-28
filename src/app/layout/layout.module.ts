@@ -3,14 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { TopbarComponent } from './topbar/topbar.component';
+import { RightSideBarComponent } from './right-side-bar/right-side-bar.component';
+import { LeftSideBarComponent } from './left-side-bar/left-side-bar.component';
 
 
 @NgModule({
     declarations: [
-        TopbarComponent
+        TopbarComponent,
+        RightSideBarComponent,
+        LeftSideBarComponent
     ],
     exports: [
-        TopbarComponent
+        TopbarComponent,
+        LeftSideBarComponent
     ],
     imports: [
         CommonModule,

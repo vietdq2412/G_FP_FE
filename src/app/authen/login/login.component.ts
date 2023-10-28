@@ -10,7 +10,7 @@ import {User} from "../../entity/user";
 })
 export class LoginComponent implements OnInit{
 private user : User = new User();
-@Output() userEmitter = new EventEmitter<User>();
+// @Output() userEmitter = new EventEmitter<User>();
   constructor(private route: Router,
     private authService: AuthService) {
   }
@@ -18,12 +18,9 @@ private user : User = new User();
   ngOnInit(): void {
   }
 
-  emmit(){
-    this.user.role = 'company';
-    this.userEmitter.emit(this.user);
-  }
   login(role:string) {
     this.authService.login(role);
+    this.user.role = role;
   }
 
 

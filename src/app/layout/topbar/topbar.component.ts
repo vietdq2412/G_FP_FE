@@ -8,28 +8,32 @@ import {User} from "../../entity/user";
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.css']
 })
-export class TopbarComponent implements OnInit, OnChanges{
-  @Input() user: User = new User();
+export class TopbarComponent implements OnInit, OnChanges {
+  user: NonNullable<User> = new User();
 
-  isLoggedIn : Observable<boolean> = new Observable<boolean>();
-  role: Observable<string> = new Observable<string>();
+  isLoggedIn: Observable<boolean> = new Observable<boolean>();
+  currentUser: Observable<NonNullable<User>> = new Observable<NonNullable<User>>();
 
-  constructor(private authService:AuthService) {
+  constructor(private authService: AuthService) {
   }
-  ngOnInit(): void {
-    this.isLoggedIn = this.authService.isloggedIn();
-    this.role = this.authService.getRole();
 
-    console.log(this.user)
+  ngOnInit(): void {
+    this.currentUser = this.authService.getUser()
+    this.currentUser.subscribe(user => {
+      this.user = user;
+    });
+    console.log("topbar ts", this.user)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+
   }
-  logout(){
+
+  logout() {
     this.authService.logout();
+    console.log(this.user)
+    console.log(this.currentUser)
   }
-
-
 
 
 }

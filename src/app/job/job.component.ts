@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {User} from "../entity/user";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-job',
@@ -9,4 +10,9 @@ import {User} from "../entity/user";
 export class JobComponent {
   @Input() user: User = new User();
 
+  constructor(private authService:AuthService) {
+  }
+  getUser() {
+    this.authService.getUser();
+  }
 }

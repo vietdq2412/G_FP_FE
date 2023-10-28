@@ -1,44 +1,49 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {BehaviorSubject, Observable} from "rxjs";
+import {User} from "../entity/user";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit{
-  private _isloggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  private role: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  constructor(private route:Router) { }
+export class AuthService implements OnInit {
+  private user: BehaviorSubject<NonNullable<User>> = new BehaviorSubject<NonNullable<User>>(new User());
+
+
+  constructor(private route: Router) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  public isloggedIn(): Observable<boolean> {
-
-    if (localStorage.getItem('role')){
-      this._isloggedIn.next(true);
+  getUser(): Observable<NonNullable<User>> {
+    const userStr = localStorage.getItem('userPrinciple');
+    if (userStr) {
+      this.user.next(JSON.parse(userStr));
     }
-    return this._isloggedIn.asObservable();
+    console.log("getuser athservice", this.user)
+    return this.user.asObservable();
   }
 
-  public getRole():Observable<string>{
-    // @ts-ignore
-    this.role.next(localStorage.getItem('role').toString());
-    console.log(this.role.asObservable())
-    return this.role.asObservable();
-  }
-  public login(role:string): void{
+
+  public login(role: string): void {
+    const userLogin = new User();
+    userLogin.role = role;
+
+    // get token + user principle API
     localStorage.setItem('token', Math.random().toString());
-    localStorage.setItem('role',role);
-    this._isloggedIn.next(true);
-    this.route.navigate(['job-page']).then(r => {})
+    localStorage.setItem('userPrinciple', JSON.stringify(userLogin));
+    this.user.next(userLogin);
+    this.route.navigate(['job-page']).then(r => {
+    })
   }
-  public logout(): void{
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    this._isloggedIn.next(false);
 
+  public logout(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userPrinciple');
+    this.user.next(new User());
     console.log("logout")
   }
 }

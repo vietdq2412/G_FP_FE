@@ -1,0 +1,19 @@
+.navbar-brand:hover{
+    background-color: #bdbdb8;
+}
+
+.navbar-brand{
+    margin: 0px;
+    padding: 0px 10px;
+    text-align: center;
+}
+
+*::marker {
+  display: none;
+}
+.dropdown-menu {
+  position: absolute;
+  left: -120px;
+  width: fit-content;
+}
+
