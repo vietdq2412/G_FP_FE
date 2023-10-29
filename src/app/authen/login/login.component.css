@@ -1,0 +1,45 @@
+.login-component {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+
+}
+
+.bg-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #bdbdb8;
+  opacity: 0.7;
+}
+
+.vh-100{
+  position: relative;
+}
+
+.form-login{
+  border-radius: 15px;
+  padding: 15px;
+  background-color: rgba(208, 196, 196, 0.8);
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+.h-custom {
+  height: calc(100% - 73px);
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
