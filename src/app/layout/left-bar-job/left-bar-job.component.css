@@ -1,0 +1,39 @@
+
+a{
+  text-decoration: none;
+  color: black;
+}
+.left-bar-job-component{
+  background-color: #e7e3e3;
+  border-radius: 8px;
+  box-shadow:
+    2px 3px 2px 3px rgba(0,0,0,0.1),
+    3px 2px 3px 2px rgba(0,0,0,0.1);
+}
+
+.list-group-item h5{
+  margin-left: 5%;
+}
+
+.category-list hr{
+  margin: 0 0 16px;
+}
+.category-list {
+  height: 244px;
+  overflow-y: scroll;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+}
+
+.form-check:hover{
+  background-color: #e1dddd;
+  cursor: pointer;
+}
+
+.form-check label,input{
+  cursor: pointer;
+}
+
+
+
+

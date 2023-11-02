@@ -36,7 +36,7 @@ export class AuthService implements OnInit {
     localStorage.setItem('token', Math.random().toString());
     localStorage.setItem('userPrinciple', JSON.stringify(userLogin));
     this.user.next(userLogin);
-    this.route.navigate(['job-page']).then(r => {
+    this.route.navigate(['job/job-content']).then(r => {
     })
   }
 

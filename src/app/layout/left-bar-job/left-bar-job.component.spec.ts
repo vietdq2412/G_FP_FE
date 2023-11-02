@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LeftSideBarComponent } from './left-side-bar.component';
+import { LeftBarJobComponent } from './left-bar-job.component';
 
 describe('LeftSideBarComponent', () => {
-  let component: LeftSideBarComponent;
-  let fixture: ComponentFixture<LeftSideBarComponent>;
+  let component: LeftBarJobComponent;
+  let fixture: ComponentFixture<LeftBarJobComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LeftSideBarComponent]
+      declarations: [LeftBarJobComponent]
     });
-    fixture = TestBed.createComponent(LeftSideBarComponent);
+    fixture = TestBed.createComponent(LeftBarJobComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

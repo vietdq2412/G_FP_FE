@@ -1,0 +1,15 @@
+.company-left-bar-component {
+  background-color: #e7e3e3;
+  border-radius: 8px;
+  box-shadow: 2px 3px 2px 3px rgba(0, 0, 0, 0.1),
+  3px 2px 3px 2px rgba(0, 0, 0, 0.1);
+}
+
+.action-item:hover {
+  background-color: #bdbdb8;
+}
+
+.action-item {
+  padding: 8px;
+  cursor: pointer;
+}
