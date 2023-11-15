@@ -13,6 +13,6 @@ export class JobComponent {
   constructor(private authService:AuthService) {
   }
   getUser() {
-    this.authService.getUser();
+    this.authService.getUserAsObservable();
   }
 }

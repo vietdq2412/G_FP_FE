@@ -1,1 +1,52 @@
-<p>register works!</p>
+<!--  <form [formGroup]="registerForm" (ngSubmit)="register()">-->
+<!--    <div>-->
+<!--      <label for="username">Username:</label>-->
+<!--      <input type="text" id="username" formControlName="username">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label for="password">Password:</label>-->
+<!--      <input type="password" id="password" formControlName="password">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <label for="role">Role:</label>-->
+<!--      <select id="role" formControlName="role">-->
+<!--        <option value="USER">User</option>-->
+<!--        <option value="COMPANY">Company</option>-->
+<!--        <option value="ADMIN">Admin</option>-->
+<!--      </select>-->
+<!--    </div>-->
+<!--    <button type="submit" [disabled]="!registerForm.valid">Register</button>-->
+<!--  </form>-->
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="form3Example3">Email address</label>
+    <input formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
+           placeholder="Enter a valid email address"/>
+  </div>
+
+  <!-- Password input -->
+  <div class="form-outline mb-3">
+    <label class="form-label" for="form3Example4">Password</label>
+    <input formControlName="password" type="password" id="form3Example4" class="form-control form-control-lg"
+           placeholder="Enter password"/>
+  </div>
+
+  <div class="form-outline mb-4">
+    <label for="role">Role:</label><br>
+    <select class="form-check-label" id="role" formControlName="role">
+      <option value="2">User</option>
+      <option value="3">Company</option>
+      <option value="1">Admin</option>
+    </select>
+  </div>
+
+  <div class="text-center text-lg-start mt-4 pt-2">
+    <button type="submit" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;"
+            [disabled]="!registerForm.valid">Register
+    </button>
+  </div>
+
+</form>

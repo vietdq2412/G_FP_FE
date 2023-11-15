@@ -18,7 +18,7 @@ export class TopbarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.currentUser = this.authService.getUser()
+    this.currentUser = this.authService.getUserAsObservable()
     this.currentUser.subscribe(user => {
       this.user = user;
     });
