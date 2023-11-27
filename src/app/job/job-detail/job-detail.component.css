@@ -1,0 +1,51 @@
+.job-detail-container {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.job-detail-container h1 {
+  color: #333;
+}
+
+.recruiter-info, .location, .about-company, .job-responsibilities {
+  margin-bottom: 20px;
+}
+
+.job-detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  width: 48%;
+  margin-bottom: 10px;
+}
+
+.detail-item h1 {
+  width: 50px;
+  margin-bottom: 10px;
+  margin-right: 1px;
+}
+
+.location, .about-company h2, .job-responsibilities h2 {
+  color: #333;
+  font-weight: bold;
+}
+
+.about-company p, .job-responsibilities ul {
+  color: #666;
+}
+
+.col-2 button{
+  width: 100%;
+  margin: 2px;
+  border-radius: 8px;
+}

@@ -13,10 +13,11 @@
                class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 form-login">
-          <div class="divider d-flex align-items-center my-4">
-            <p class="text-center fw-bold mx-3 mb-0">Welcome!</p>
-          </div>
           <form *ngIf="showLoginForm">
+            <div class="divider d-flex align-items-center my-4">
+              <h2 class="text-center fw-bold mx-3 mb-0">Login !</h2>
+            </div>
+            <p class="error-alert" *ngIf="!isAccountValid" style="color: red">Wrong email or password!</p>
             <!-- Email input -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form3Example3">Email address</label>
@@ -49,7 +50,7 @@
             </div>
           </form>
           <div *ngIf="!showLoginForm">
-            <app-register></app-register>
+            <app-register (loginFormEvent)="handleLoginFormEvent($event)"></app-register>
           </div>
 
           <p *ngIf="showLoginForm" class="small fw-bold mt-2 pt-1 mb-0">

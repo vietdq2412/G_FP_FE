@@ -12,6 +12,7 @@ import {Account} from "../../entity/account";
 export class LoginComponent implements OnInit {
   private user: User = new User();
   showLoginForm = true;
+  isAccountValid: boolean = true;
 
   constructor(private route: Router,
               private authService: AuthService) {
@@ -25,17 +26,32 @@ export class LoginComponent implements OnInit {
       email, password
     }
     this.authService.loginAPI(account).subscribe(userPrinciple => {
-      console.log(userPrinciple.roles)
-      this.user = new User(userPrinciple.accountId,userPrinciple.profileId
-        ,userPrinciple.username,userPrinciple.status, userPrinciple.token, userPrinciple.roles[0].name)
-      localStorage.setItem('token', userPrinciple.token);
-      localStorage.setItem('userPrinciple', JSON.stringify(this.user));
-      this.authService.setUser(this.user);
-      this.route.navigate(['job/job-content']).then(r => {})
+      if (userPrinciple != null) {
+        console.log("LoginComponent response null");
+        this.user = new User(userPrinciple.accountId, userPrinciple.profileId
+          , userPrinciple.username, userPrinciple.status, userPrinciple.token, userPrinciple.roles[0].name)
+        console.log(userPrinciple);
+        localStorage.setItem('token', userPrinciple.token);
+        localStorage.setItem('role', userPrinciple.roles[0].name);
+        localStorage.setItem('profileId', userPrinciple.profileId);
+        localStorage.setItem('userPrinciple', JSON.stringify(this.user));
+        this.isAccountValid = true;
+        this.authService.setUser(this.user);
+        this.route.navigate(['job/job-content']).then(r => {
+        })
+      } else {
+        this.isAccountValid = false;
+      }
+    }, error => {
+      console.log(error.status, error)
     });
   }
 
+  handleLoginFormEvent(formValue: any) {
+    this.toggleForm()
+  }
 
   toggleForm() {
     this.showLoginForm = !this.showLoginForm;
-  }}
+  }
+}

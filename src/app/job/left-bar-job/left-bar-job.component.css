@@ -25,6 +25,10 @@ a{
   padding: 10px;
 }
 
+.category-list::-webkit-scrollbar {
+  display: none;
+}
+
 .form-check:hover{
   background-color: #e1dddd;
   cursor: pointer;

@@ -27,5 +27,39 @@
 }
 
 
+.job-card {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.company-logo img {
+  width: 77px;
+  height: 77px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.job-details h2 {
+  margin: 0;
+  font-size: 1.1em;
+}
+.job-details h6 {
+  font-size: 12px;
+}
+
+.job-details p {
+  margin: 5px 0;
+  font-size: 10px;
+  color: #555;
+}
+
+.job-card:hover{
+  background-color: #e6e2e2;
+  cursor: pointer;
+}
+
+
 
 

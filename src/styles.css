@@ -2,3 +2,15 @@
 body, html {
   height: 100%;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+::ng-deep .custom-snackbar-text-color .mat-snack-bar-container {
+  color: #192a9b; /* Your desired text color */
+}
+
+.EditJobDialog{
+  padding: 20px;
+}

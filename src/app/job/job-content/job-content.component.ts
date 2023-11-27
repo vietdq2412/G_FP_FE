@@ -1,63 +1,25 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Job} from "../../entity/job";
+import {JobService} from "../../services/job.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-job-content',
   templateUrl: './job-content.component.html',
   styleUrls: ['./job-content.component.css']
 })
-export class JobContentComponent {
-
-
-   jobs = [
-    {
-      companyName: 'TechCorp Inc.',
-      jobName: 'Software Engineer',
-      city: 'New York'
-    },
-    {
-      companyName: 'HealthMed Solutions',
-      jobName: 'Medical Researcher',
-      city: 'San Francisco'
-    },
-    {
-      companyName: 'EcoEnergy LLC',
-      jobName: 'Renewable Energy Specialist',
-      city: 'Seattle'
-    },
-    {
-      companyName: 'Designify Studios',
-      jobName: 'Graphic Designer',
-      city: 'Los Angeles'
-    },
-    {
-      companyName: 'EduFuture Academy',
-      jobName: 'Educational Consultant',
-      city: 'Chicago'
-    },
-    {
-      companyName: 'MarketGenius Co.',
-      jobName: 'Marketing Analyst',
-      city: 'Miami'
-    },
-    {
-      companyName: 'WebCrafters Agency',
-      jobName: 'Web Developer',
-      city: 'Austin'
-    },
-    {
-      companyName: 'FinTrust Bank',
-      jobName: 'Financial Advisor',
-      city: 'Boston'
-    },
-    {
-      companyName: 'RoboticsTech Ltd.',
-      jobName: 'AI Specialist',
-      city: 'San Diego'
-    },
-    {
-      companyName: 'TravelGo Enterprises',
-      jobName: 'Travel Consultant',
-      city: 'Denver'
+export class JobContentComponent implements OnInit{
+    jobs: Job[] = [];
+    constructor(private jobService: JobService,
+                private router: Router) {
     }
-  ];
+    ngOnInit(): void {
+        let id = localStorage.getItem('profileId');
+        this.jobService.getJobs().subscribe(
+            (data) => {
+                this.jobs = data
+                console.log("lis jobs", this.jobs)
+            }
+        );
+    }
 }

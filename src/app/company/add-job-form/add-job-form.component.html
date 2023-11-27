@@ -1,0 +1,80 @@
+<div class="form-container">
+  <form [formGroup]="jobForm" (ngSubmit)="onSubmitAddJob()" novalidate>
+    <h2>Add a Job Listing</h2>
+
+    <!-- Job Name -->
+    <div class="form-group">
+      <label for="jobName">Job Name</label>
+      <input formControlName="name" type="text" id="jobName" class="form-control" placeholder="Enter job name" required>
+      <div *ngIf="jobForm.controls['name'].invalid && jobForm.controls['name'].touched" class="error">
+        Job Name is required.
+      </div>
+    </div>
+
+    <!-- Job Categories -->
+    <div class="form-group">
+      <label for="jobCategory">Job Category</label>
+      <select formControlName="jobCategory" id="jobCategory" class="form-control" multiple required>
+        <option *ngFor="let category of jobCategories" [ngValue]="category">{{ category.name }}</option>
+      </select>
+      <div *ngIf="jobForm.controls['jobCategory'].invalid && jobForm.controls['jobCategory'].touched" class="error">
+        At least one Job Category is required.
+      </div>
+    </div>
+
+    <!-- Job Level -->
+    <div class="form-group">
+      <label for="jobLevel">Job Level</label>
+      <select formControlName="jobLevel" id="jobLevel" class="form-control" required>
+        <option value="">Select job level</option>
+        <option value="junior">Junior</option>
+        <option value="mid">Mid-level</option>
+        <option value="senior">Senior</option>
+      </select>
+      <div *ngIf="jobForm.controls['jobLevel'].invalid && jobForm.controls['jobLevel'].touched" class="error">
+        Job Level is required.
+      </div>
+    </div>
+
+    <!-- Required Experience -->
+    <div class="form-group">
+      <label for="requiredExperience">Required Experience</label>
+      <input formControlName="requiredExperience" type="text" id="requiredExperience" class="form-control" placeholder="Enter required experience in years" required>
+      <div *ngIf="jobForm.controls['requiredExperience'].invalid && jobForm.controls['requiredExperience'].touched" class="error">
+        Required Experience is required.
+      </div>
+    </div>
+
+    <!-- Required Education -->
+    <div class="form-group">
+      <label for="requiredEducation">Required Education</label>
+      <input formControlName="requiredEducation" type="text" id="requiredEducation" class="form-control" placeholder="Enter required education level" required>
+      <div *ngIf="jobForm.controls['requiredEducation'].invalid && jobForm.controls['requiredEducation'].touched" class="error">
+        Required Education is required.
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input formControlName="location" type="text" id="location" class="form-control" placeholder="Enter job location" required>
+      <div *ngIf="jobForm.controls['location'].invalid && jobForm.controls['location'].touched" class="error">
+        Location is required.
+      </div>
+    </div>
+
+    <!-- Job Description -->
+    <div class="form-group">
+      <label for="jobDescription">Job Description</label>
+      <textarea formControlName="description" id="jobDescription" class="form-control" rows="5" placeholder="Enter job description" required></textarea>
+      <div *ngIf="jobForm.controls['description'].invalid && jobForm.controls['description'].touched" class="error">
+        Job Description is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!jobForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

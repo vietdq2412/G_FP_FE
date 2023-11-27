@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {adminGuard, authGuard, companyGuard} from "../guards/auth.guard";
+import {authGuard} from "../guards/auth.guard";
 import {JobDetailComponent} from "./job-detail/job-detail.component";
 import {JobContentComponent} from "./job-content/job-content.component";
-import {CompanyPageComponent} from "./company-page/company-page.component";
 
 const routes: Routes = [
   {
@@ -12,15 +11,10 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: 'job-detail',
+    path: 'job-detail/:id',
     component: JobDetailComponent,
     canActivate: [authGuard]
-  },
-  {
-    path: 'manage-company',
-    component: CompanyPageComponent,
-    canActivate: [companyGuard]
-  },
+  }
 ];
 
 @NgModule({

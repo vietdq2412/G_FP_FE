@@ -1,0 +1,16 @@
+<div class="row"></div>
+<div class="row">
+  <div class="job-listing-container">
+    <div *ngFor="let job of jobs" class="job-card" routerLink="/job/job-detail/{{job.id}}">
+        <div class="company-logo">
+          <img src="{{ job.company?.logo }}" alt="Company Logo">
+        </div>
+        <div class="job-details">
+          <h2>{{ job.name }}</h2>
+          <h6>{{ job.company?.name }}</h6>
+          <p>{{ job.location }}</p>
+        </div>
+    </div>
+  </div>
+</div>
+

@@ -3,9 +3,12 @@
 }
 
 .navbar-brand{
-    margin: 0px;
     padding: 0px 10px;
     text-align: center;
+}
+
+.navbar-brand i{
+  padding: 5px;
 }
 
 *::marker {

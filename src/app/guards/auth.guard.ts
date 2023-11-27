@@ -20,7 +20,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
     user = JSON.parse(userStr);
   }
   const router = inject(Router);
-  if (user.role == 'ADMIN'){
+  if (user.role == 'ROLE_ADMIN'){
     return true;
   }else {
     console.log('er: 403! required admin!')
@@ -36,7 +36,7 @@ export const companyGuard: CanActivateFn = (route, state) => {
     user = JSON.parse(userStr);
   }
   const router = inject(Router);
-  if (user.role == 'COMPANY' || user.role == 'ADMIN'){
+  if (user.role == 'ROLE_COMPANY' || user.role == 'ROLE_ADMIN'){
     return true;
   }else {
     console.log('er: 403! required company!')

@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { JobRoutingModule } from './job-routing.module';
-import { JobDetailComponent } from './job-detail/job-detail.component';
-import { JobComponent } from './job.component';
-import { JobContentComponent } from './job-content/job-content.component';
-import {AppRoutingModule} from "../app-routing.module";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {JobRoutingModule} from './job-routing.module';
+import {JobDetailComponent} from './job-detail/job-detail.component';
+import {JobComponent} from './job.component';
+import {JobContentComponent} from './job-content/job-content.component';
 import {LayoutModule} from "../layout/layout.module";
-import { CompanyPageComponent } from './company-page/company-page.component';
+import {LeftBarJobComponent} from "./left-bar-job/left-bar-job.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
+import { ApplyCVFormComponent } from './apply-cv-form/apply-cv-form.component';
 
 
 @NgModule({
@@ -14,13 +16,15 @@ import { CompanyPageComponent } from './company-page/company-page.component';
     JobDetailComponent,
     JobComponent,
     JobContentComponent,
-    CompanyPageComponent,
-
+    LeftBarJobComponent,
+    ApplyCVFormComponent
   ],
   imports: [
     CommonModule,
     JobRoutingModule,
     LayoutModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ]
 })
 export class JobModule { }

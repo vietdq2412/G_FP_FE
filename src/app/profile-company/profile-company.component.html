@@ -1,0 +1,28 @@
+<div class="profile-container">
+  <h2>Company Profile</h2>
+  <div class="profile-picture">
+    <div class="profile-picture">
+      <input type="file" id="logoUpload" style="display: none;" accept="image/*" (change)="onLogoSelected($event)">
+      <button class="edit-button" onclick="document.getElementById('logoUpload').click()">
+        <img [src]="company.logo" alt="Company Logo">
+        <span><i class="bi bi-pen-fill"></i></span>
+      </button>
+    </div>
+  </div>
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()"  class="profile-form">
+    <label for="companyName">Company Name</label>
+    <input formControlName="name" type="text" id="companyName" name="companyName" [(ngModel)]="company.name">
+
+    <label for="about">About</label>
+    <textarea formControlName="about" id="about" name="about" [(ngModel)]="company.about"></textarea>
+
+    <label for="address">Address</label>
+    <input formControlName="address" type="text" id="address" name="address" [(ngModel)]="company.address">
+
+    <label for="status">Status</label>
+    <input formControlName="status" type="text" id="status" name="status">
+
+    <button type="submit">Save</button>
+  </form>
+
+</div>

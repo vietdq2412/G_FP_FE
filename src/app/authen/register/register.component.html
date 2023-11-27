@@ -1,29 +1,15 @@
-<!--  <form [formGroup]="registerForm" (ngSubmit)="register()">-->
-<!--    <div>-->
-<!--      <label for="username">Username:</label>-->
-<!--      <input type="text" id="username" formControlName="username">-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <label for="password">Password:</label>-->
-<!--      <input type="password" id="password" formControlName="password">-->
-<!--    </div>-->
-<!--    <div>-->
-<!--      <label for="role">Role:</label>-->
-<!--      <select id="role" formControlName="role">-->
-<!--        <option value="USER">User</option>-->
-<!--        <option value="COMPANY">Company</option>-->
-<!--        <option value="ADMIN">Admin</option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--    <button type="submit" [disabled]="!registerForm.valid">Register</button>-->
-<!--  </form>-->
+
 
 <form [formGroup]="registerForm" (ngSubmit)="register()">
+  <div class="divider d-flex align-items-center my-4">
+    <h2 class="text-center fw-bold mx-3 mb-0">Create new Account !</h2>
+  </div>
   <!-- Email input -->
   <div class="form-outline mb-4">
     <label class="form-label" for="form3Example3">Email address</label>
     <input formControlName="email" type="email" id="form3Example3" class="form-control form-control-lg"
            placeholder="Enter a valid email address"/>
+    <p class="error-alert" *ngIf="duplicatedEmail">Duplicated email!</p>
   </div>
 
   <!-- Password input -->
@@ -50,3 +36,4 @@
   </div>
 
 </form>
+
