@@ -1,0 +1,154 @@
+
+ h1, p {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.profile-header {
+  background-color: #e1ecf4;
+  height: 200px;
+}
+.profile-action{
+  position: relative;
+  color: #bdbdb8;
+  float: right;
+  padding: 3px;
+  margin-top: 164px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.profile-action:hover{
+  background-color: #cce1f1;
+  padding: 5px;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #fff;
+  transform: translate(37%, -63%);
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.profile-image img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.profile-info {
+  margin-top: -230px;
+  margin-left: 290px;
+  margin-bottom: 10px;
+}
+
+
+.profile-info p {
+  color: #666;
+  font-size: 16px;
+}
+.personal-info i{
+  padding-right: 2px;
+  width: 16px;
+  height: 16px;
+}
+.open-button {
+  background-color: #0073b1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.work-skill {
+  padding: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.skill-item{
+  border: #8a8a8a 1px solid;
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf9f9;
+  margin: 3px;
+  width: 100px;
+  height: 40px;
+}
+.skill-item p {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.add-skill-item{
+  border: #8a8a8a 1px solid;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin: 3px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+ .add-skill-item:hover{
+   padding: 6px;
+   width: 41px;
+   height: 41px;
+ }
+
+ .plus-symbol {
+   font-size: 24px;
+   color: black; /* Color of the '+' symbol */
+ }
+
+/*//////////////*/
+ .job-applied{
+   width: 90%;
+   overflow: scroll;
+   max-height: 60%;
+ }
+
+ .job-applied img {
+   border-radius: 5px;
+   margin: 3px;
+ }
+
+ .job-applied-item{
+   padding: 3px;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+ .job-applied-item:hover {
+   padding: 5px;
+   background-color: #8a8a8a;
+ }
+
+ .job-applied {
+   width: 85%;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: #f5f5f5;
+   border-radius: 8px;
+ }
+
+ .job-applied h2 {
+   text-align: center;
+   margin-bottom: 20px;
+ }

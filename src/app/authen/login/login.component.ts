@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   toggleForm() {
+    this.isAccountValid = true;
     this.showLoginForm = !this.showLoginForm;
   }
 }

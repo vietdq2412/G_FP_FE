@@ -8,6 +8,7 @@ import {User} from "../entity/user";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {environment} from "../../environment";
 
 @Component({
   selector: 'app-profile-company',
@@ -15,7 +16,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./profile-company.component.css']
 })
 export class ProfileCompanyComponent implements OnInit {
-  private companyLogoPath: string = '/company-logos';
+  private companyLogoPath: string = environment.logoFirebasePath;
   private user: User = new User();
   company: Company = new Company();
   companyForm: any;

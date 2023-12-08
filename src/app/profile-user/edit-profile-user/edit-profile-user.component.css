@@ -1,0 +1,60 @@
+.edit-profile-container {
+  height: 30%;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.edit-profile-picture {
+  margin: 0 auto;
+}
+
+#avatar {
+  position: relative;
+  width: 150px;
+  height: 150px;
+
+}
+
+
+

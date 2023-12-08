@@ -1,1 +1,84 @@
-<p>profile-user works!</p>
+<div class="row">
+  <div class="col-8">
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-action" (click)="editAppUserForm()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
+            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001"/>
+          </svg>
+        </div>
+      </div>
+      <div class="profile-image">
+        <img [src]="appUser.image" alt="avatar">
+      </div>
+      <div class="profile-info">
+        <h1>{{appUser.name}}</h1>
+        <div class="personal-info">
+          <table>
+            <tr>
+              <th><i class="bi bi-calendar"> </i></th>
+              <td>{{appUser.DOB}}</td>
+            </tr>
+            <tr>
+              <th><i class="bi bi-envelope-open"> </i></th>
+              <td>{{appUser.email}}</td>
+            </tr>
+            <tr>
+              <th><i class="bi bi-telephone"></i></th>
+              <td>{{appUser.phoneNumber}}</td>
+            </tr>
+          </table>
+          <p>{{appUser.about}}</p>
+        </div>
+      </div>
+      <div class="work-skill">
+        <h3>Skills</h3>
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="col add-skill-item" (click)="openAddSkillFormDialog(appUser.id)"><span class="plus-symbol">+</span></div>
+            <div *ngFor="let skill of appUser.skills" class="col skill-item"><strong>{{skill.name}}</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="job-applied">
+      <h2>Job Applied</h2>
+      <div  *ngFor="let cv of CVs">
+        <div class="row job-applied-item" (click)="viewDetailJob(cv.job?.id)">
+          <div class="col-2">
+            <img width="50px" height="50px" src="{{cv.job?.company?.logo}}" alt="">
+          </div>
+          <div class="col-10">
+            <h3>{{cv.job?.name}}</h3>
+          </div>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row test">
+
+</div>

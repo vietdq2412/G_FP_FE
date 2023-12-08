@@ -10,5 +10,9 @@ export const environment = {
     measurementId: "G-HPG5R3MMJ7"
   },
 
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
+
+  logoFirebasePath: '/company_logos',
+  cvFirebasePath: '/cv',
+  appUserAvatarFirebasePath: '/appUserAvatar'
 };

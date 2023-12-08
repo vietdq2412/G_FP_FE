@@ -24,7 +24,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-
+        console.log(error)
         if (error && error.status === 403) {
           this.router.navigate(['/login-page']);
         }

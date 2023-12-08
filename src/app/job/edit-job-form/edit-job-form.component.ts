@@ -5,7 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {Company} from "../../entity/company";
 import {ActivatedRoute} from "@angular/router";
 import {Job} from "../../entity/job";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-edit-job-form',
@@ -22,7 +22,8 @@ export class EditJobFormComponent implements OnInit {
               private jobService: JobService,
               private authService: AuthService,
               private route: ActivatedRoute,
-              @Inject(MAT_DIALOG_DATA) public data: any
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private dialogRef: MatDialogRef<EditJobFormComponent>
   ) {
     this.jobForm = this.fb.group({
       name: ['', Validators.required],
@@ -58,11 +59,13 @@ export class EditJobFormComponent implements OnInit {
   onSubmitUpdateJob() {
 
     this.jobForm.value.company = new Company(this.job.company?.id);
+    this.jobForm.value.id = this.job.id;
 
     console.log(this.jobForm.value)
-    this.jobService.addJob(this.jobForm.value).subscribe(
+    this.jobService.updateJob(this.jobForm.value).subscribe(
       response => {
         console.log('Job updated successfully', response);
+        this.dialogRef.close('Update success!');
       },
       error => {
         console.error('Error updating job', error);

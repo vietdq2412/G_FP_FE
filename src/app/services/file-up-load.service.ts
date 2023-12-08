@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireStorage} from "@angular/fire/compat/storage";
-import {finalize, Observable} from "rxjs";
+import {BehaviorSubject, finalize, Observable} from "rxjs";
 import firebase from "firebase/compat";
 import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 
@@ -9,6 +9,14 @@ import UploadTaskSnapshot = firebase.storage.UploadTaskSnapshot;
 })
 export class FileUpLoadService {
 
+  private progressSource = new BehaviorSubject<number>(0);
+  currentProgress = this.progressSource.asObservable();
+
+  updateProgress(progress: number | undefined) {
+    if (progress != null) {
+      this.progressSource.next(progress);
+    }
+  }
   constructor(private storage: AngularFireStorage) {
   }
 
@@ -18,7 +26,8 @@ export class FileUpLoadService {
     const task = this.storage.upload(filePath, file);
 
     task.percentageChanges().subscribe(percentage => {
-      console.log(`Upload is ${percentage}% done`);
+      this.updateProgress(percentage);
+      console.log(this.currentProgress)
     });
 
     return new Observable(observer => {

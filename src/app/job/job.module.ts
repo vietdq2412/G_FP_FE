@@ -7,8 +7,9 @@ import {JobContentComponent} from './job-content/job-content.component';
 import {LayoutModule} from "../layout/layout.module";
 import {LeftBarJobComponent} from "./left-bar-job/left-bar-job.component";
 import {MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ApplyCVFormComponent } from './apply-cv-form/apply-cv-form.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { ApplyCVFormComponent } from './apply-cv-form/apply-cv-form.component';
     JobRoutingModule,
     LayoutModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatProgressBarModule
   ]
 })
 export class JobModule { }
