@@ -10,7 +10,7 @@ import {Skill} from "../entity/skill";
   providedIn: 'root'
 })
 export class AppUserService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl + "/appUser";
   constructor(private http:HttpClient) { }
 
   private getToken() {
@@ -18,15 +18,18 @@ export class AppUserService {
   }
 
   getAppUserProfile(id: any):Observable<Company> {
-    return this.http.get(`${this.apiUrl}/appUser/${id}`);
+    return this.http.get(`${this.apiUrl}/${id}`);
   }
 
   updateAppUserProfile(id: number | undefined, appUser: AppUser, DOB:any):Observable<any>{
-    console.log("updateAppUserProfile service ", appUser)
-    return this.http.put(`${this.apiUrl}/appUser/${id}/${DOB}`,appUser);
+    return this.http.put(`${this.apiUrl}/${id}/${DOB}`,appUser);
   }
 
-  addSkill(appUserId:any, appUser:AppUser){
-    return this.http.put(`${this.apiUrl}/addSkill/${appUserId}`,appUser);
+  addSkill(appUserId:any, skillId:any){
+    return this.http.put(`${this.apiUrl}/addSkill/${appUserId}/${skillId}`,'');
+  }
+
+  deleteSkill(appUserId:any, skillId:any) {
+    return this.http.put(`${this.apiUrl}/deleteSkill/${appUserId}/${skillId}`,'');
   }
 }

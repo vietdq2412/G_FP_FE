@@ -7,7 +7,7 @@ import {CompanyLeftBarComponent} from "./company-left-bar/company-left-bar.compo
 import { CompanyJobComponent } from './company-job/company-job.component';
 import {AddJobFormComponent} from "./add-job-form/add-job-form.component";
 import {ReactiveFormsModule} from "@angular/forms";
-import { EditJobFormComponent } from '../job/edit-job-form/edit-job-form.component';
+import { EditJobFormComponent } from '../job/job-detail/edit-job-form/edit-job-form.component';
 import {MatDialogModule} from "@angular/material/dialog";
 
 

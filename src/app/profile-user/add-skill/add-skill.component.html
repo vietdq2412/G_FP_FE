@@ -1,14 +1,11 @@
 <div class="select-skill-container">
-    <form #selectSkillForm="ngForm" (ngSubmit)="onSelect(selectSkillForm)">
-        <div class="form-group">
-            <label for="selectedSkill">Select Skill</label>
-            <select id="selectedSkill" class="form-control selectedSkill" name="selectedSkill" ngModel required>
-                <option *ngFor="let skill of skills" [value]="skill.id">{{ skill.name }}</option>
-                <option *ngFor="let skill of skills" [value]="skill.id">{{ skill.name }}</option>
-                <option *ngFor="let skill of skills" [value]="skill.id">{{ skill.name }}</option>
-                <option *ngFor="let skill of skills" [value]="skill.id">{{ skill.name }}</option>
-            </select>
-        </div>
-        <button (click)="addSkill()" type="submit" class="btn btn-primary" [disabled]="!selectSkillForm.valid">Add</button>
-    </form>
+  <form #selectSkillForm="ngForm" (ngSubmit)="addSkill(selectSkillForm)">
+    <div class="form-group">
+      <label for="selectedSkill">Select Skill</label>
+      <select id="selectedSkill" class="form-control selectedSkill" name="selectedSkill" ngModel required>
+        <option *ngFor="let skill of skills" [value]="skill.id">{{ skill.name }}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!selectSkillForm.valid">Add</button>
+  </form>
 </div>

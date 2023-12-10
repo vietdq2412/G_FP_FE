@@ -36,24 +36,12 @@
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
             <div class="col add-skill-item" (click)="openAddSkillFormDialog(appUser.id)"><span class="plus-symbol">+</span></div>
-            <div *ngFor="let skill of appUser.skills" class="col skill-item"><strong>{{skill.name}}</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
-            <div  class="col skill-item"><strong>sdgsdg</strong></div>
+            <div *ngFor="let skill of appUser.skills; let i = index" class="col skill-item">
+              <tr>
+                <td><strong>{{skill.name}}</strong></td>
+                <td><span class="delete-symbol" (click)="deleteSkill(i, skill.id)"><i class="bi bi-x"></i></span></td>
+              </tr>
+            </div>
           </div>
         </div>
       </div>
@@ -70,6 +58,7 @@
           </div>
           <div class="col-10">
             <h3>{{cv.job?.name}}</h3>
+            <p>{{cv.date}}</p>
           </div>
         </div>
         <hr>

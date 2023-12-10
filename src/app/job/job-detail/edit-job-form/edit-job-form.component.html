@@ -1,10 +1,10 @@
 <div class="edit-form-container">
   <form [formGroup]="jobForm" (ngSubmit)="onSubmitUpdateJob()" novalidate>
-    <h2>Update Job</h2>
+    <h2>Edit job</h2>
 
     <!-- Job Name -->
     <div class="form-group">
-      <label for="jobName">Job Name</label>
+      <label for="jobName">Job Name <span class="requiredIcon">*</span></label>
       <input formControlName="name" type="text" id="jobName" class="form-control" placeholder="Enter job name" required>
       <div *ngIf="jobForm.controls['name'].invalid && jobForm.controls['name'].touched" class="error">
         Job Name is required.
@@ -13,7 +13,7 @@
 
     <!-- Job Categories -->
     <div class="form-group">
-      <label for="jobCategory">Job Category</label>
+      <label for="jobCategory">Job Category <span class="requiredIcon">*</span></label>
       <select formControlName="jobCategory" id="jobCategory" class="form-control" multiple required>
         <option *ngFor="let category of jobCategories" [ngValue]="category">{{ category.name }}</option>
       </select>
@@ -24,9 +24,11 @@
 
     <!-- Job Level -->
     <div class="form-group">
-      <label for="jobLevel">Job Level</label>
+      <label for="jobLevel">Job Level <span class="requiredIcon">*</span></label>
       <select formControlName="jobLevel" id="jobLevel" class="form-control" required>
         <option value="">Select job level</option>
+        <option value="intern">Intern</option>
+        <option value="fresher">Fresher</option>
         <option value="junior">Junior</option>
         <option value="mid">Mid-level</option>
         <option value="senior">Senior</option>
@@ -38,7 +40,7 @@
 
     <!-- Required Experience -->
     <div class="form-group">
-      <label for="requiredExperience">Required Experience</label>
+      <label for="requiredExperience">Required Experience <span class="requiredIcon">*</span></label>
       <input formControlName="requiredExperience" type="text" id="requiredExperience" class="form-control" placeholder="Enter required experience in years" required>
       <div *ngIf="jobForm.controls['requiredExperience'].invalid && jobForm.controls['requiredExperience'].touched" class="error">
         Required Experience is required.
@@ -47,7 +49,7 @@
 
     <!-- Required Education -->
     <div class="form-group">
-      <label for="requiredEducation">Required Education</label>
+      <label for="requiredEducation">Required Education <span class="requiredIcon">*</span></label>
       <input formControlName="requiredEducation" type="text" id="requiredEducation" class="form-control" placeholder="Enter required education level" required>
       <div *ngIf="jobForm.controls['requiredEducation'].invalid && jobForm.controls['requiredEducation'].touched" class="error">
         Required Education is required.
@@ -56,13 +58,45 @@
 
     <!-- Location -->
     <div class="form-group">
-      <label for="location">Location</label>
-      <input formControlName="location" type="text" id="location" class="form-control" placeholder="Enter job location" required>
+      <label for="location">Location <span class="requiredIcon">*</span></label>
+      <select formControlName="location" type="text" id="location" class="form-control" required>
+        <option [ngValue]="job.location" selected>{{job.location?.name}}</option>
+        <option  *ngFor="let location of listLocation" [ngValue]="location">
+          {{location.name}}
+        </option>
+      </select>
       <div *ngIf="jobForm.controls['location'].invalid && jobForm.controls['location'].touched" class="error">
         Location is required.
       </div>
     </div>
 
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input formControlName="address" type="text" id="address" class="form-control" placeholder="Enter">
+    </div>
+
+    <!-- Job Type -->
+    <div class="form-group">
+      <label for="jobType">Job type <span class="requiredIcon">*</span></label>
+      <select formControlName="jobType" type="text" id="jobType" class="form-control" required>
+        <option [ngValue]="job.jobType" selected>{{job.jobType?.name}}</option>
+        <option *ngFor="let jobType of jobTypes" [ngValue]="jobType">
+          {{jobType.name}}
+        </option>
+      </select>
+      <div *ngIf="jobForm.controls['jobType'].invalid && jobForm.controls['jobType'].touched" class="error">
+        Job type is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="expiredDate">Expired Date <span class="requiredIcon">*</span></label>
+      <input [min]="minDate.toISOString().split('T')[0]" type="date" id="expiredDate" formControlName="expiredDate" class="form-control">
+      <div *ngIf="jobForm.controls['expiredDate'].invalid && jobForm.controls['expiredDate'].touched" class="error">
+        Expired Date is required.
+      </div>
+    </div>
     <!-- Job Description -->
     <div class="form-group">
       <label for="jobDescription">Job Description</label>
@@ -77,4 +111,5 @@
       <button type="submit" class="btn btn-primary" [disabled]="!jobForm.valid">Submit</button>
     </div>
   </form>
+
 </div>

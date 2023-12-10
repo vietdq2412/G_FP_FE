@@ -1,24 +1,55 @@
 <div class="job-content-component">
-  <div class="row job-search">
-    <div>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn" type="submit"><i class="bi bi-search"></i></button>
-      </form>
-    </div>
-  </div>
+    <div class="row job-search">
+        <div class="row">
+            <div class="col-2">
+                <div class="input-group mb-3">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-category">Category</span>
+                    <select class="form-control me-2" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" [(ngModel)]="selectedCategory">
+                        <option *ngFor="let cat of listJobCategories" [ngValue]="cat.id">{{cat.name}}</option>
+                    </select>
+                </div>
 
-  <div class="row job-content">
-    <h1>job content</h1>
-    <div *ngFor="let job of jobs" class="job-card" routerLink="/job/job-detail/{{job.id}}">
-      <div class="company-logo">
-        <img src="{{ job.company?.logo }}" alt="Company Logo">
-      </div>
-      <div class="job-details">
-        <h2>{{ job.name }}</h2>
-        <h6>{{ job.company?.name }}</h6>
-        <p>{{ job.location }}</p>
-      </div>
+            </div>
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-jobType">Job Type</span>
+                    <select class="form-control me-2" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" [(ngModel)]="selectedJobType">
+                        <option *ngFor="let jobType of listJobTypes" [ngValue]="jobType.id">{{jobType.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-location">Location</span>
+                    <select class="form-control me-2" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-default" [(ngModel)]="selectedLocation">
+                        <option *ngFor="let location of listLocations" [ngValue]="location.id">{{location.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-1">
+                <button class="btnSearch btn btn-secondary" type="submit" (click)="search()"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
     </div>
-  </div>
+    <hr>
+    <div class="row job-content">
+        <div *ngFor="let job of jobs" class="job-card" routerLink="/job/job-detail/{{job.id}}">
+            <div class="company-logo">
+                <img src="{{ job.company?.logo }}" alt="Company Logo">
+            </div>
+            <div class="job-details">
+                <h2>{{ job.name }}</h2>
+                <h6>{{ job.company?.name }}</h6>
+                <p>{{ job.location }}</p>
+            </div>
+        </div>
+    </div>
 </div>

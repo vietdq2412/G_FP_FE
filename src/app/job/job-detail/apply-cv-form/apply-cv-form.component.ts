@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FileUpLoadService} from "../../services/file-up-load.service";
-import {environment} from "../../../environment";
-import {CV} from "../../entity/CV";
+import {FileUpLoadService} from "../../../services/file-up-load.service";
+import {environment} from "../../../../environment";
+import {CV} from "../../../entity/CV";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {CvService} from "../../services/cv.service";
+import {CvService} from "../../../services/cv.service";
 import {Router} from "@angular/router";
 import {Subscription} from "rxjs";
 

@@ -2,11 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {JobService} from "../../services/job.service";
 import {Job} from "../../entity/job";
-import {EditJobFormComponent} from "../edit-job-form/edit-job-form.component";
+import {EditJobFormComponent} from "./edit-job-form/edit-job-form.component";
 import {MatDialog} from "@angular/material/dialog";
 import {SnackBarComponent} from "../../snack-bar/snack-bar.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ApplyCVFormComponent} from "../apply-cv-form/apply-cv-form.component";
+import {ApplyCVFormComponent} from "./apply-cv-form/apply-cv-form.component";
 import {CV} from "../../entity/CV";
 import {CvService} from "../../services/cv.service";
 
@@ -21,6 +21,7 @@ export class JobDetailComponent implements OnInit {
   accountRole: any;
   profileId: any;
   isApplied: boolean = false;
+  expiredDays: any;
   checkJobAndCompany: boolean = false;
 
   cvs: CV[] = [];
@@ -102,6 +103,7 @@ export class JobDetailComponent implements OnInit {
   private loadData() {
     this.jobService.getJobById(this.id).subscribe(data => {
       this.job = data;
+      this.expiredDays = this.getDaysDifference(this.job.expiredDate);
       this.checkJobAndCompany = this.accountRole == 'ROLE_COMPANY' && this.job.company?.id == this.profileId;
     });
 
@@ -111,5 +113,23 @@ export class JobDetailComponent implements OnInit {
         this.isApplied = true;
       }
     });
+  }
+
+  getStrDate(strDate:string): string {
+    const currentDate = new Date(strDate);
+    const year = currentDate.getFullYear();
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
+    const day = currentDate.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+  getDaysDifference(targetDateString: any): number {
+    const currentDate = new Date();
+    const targetDate = new Date(targetDateString);
+
+    const differenceInTime = targetDate.getTime() - currentDate.getTime();
+    const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
+
+    return differenceInDays;
   }
 }

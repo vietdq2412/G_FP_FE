@@ -77,22 +77,6 @@
   border-top: 1px solid #ccc;
 }
 
-.skill-item{
-  border: #8a8a8a 1px solid;
-  border-radius: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #faf9f9;
-  margin: 3px;
-  width: 100px;
-  height: 40px;
-}
-.skill-item p {
-  margin: 0 auto;
-  text-align: center;
-}
-
 .add-skill-item{
   border: #8a8a8a 1px solid;
   border-radius: 40px;
@@ -114,7 +98,41 @@
 
  .plus-symbol {
    font-size: 24px;
-   color: black; /* Color of the '+' symbol */
+   color: black;
+ }
+
+ .skill-item{
+   border: #8a8a8a 1px solid;
+   border-radius: 13px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #faf9f9;
+   margin: 3px;
+   padding: 0;
+   width: fit-content;
+   height: 40px;
+ }
+ .skill-item p {
+   margin: 0 auto;
+   text-align: center;
+ }
+ .skill-item td{
+   padding: 5px;
+ }
+
+ .skill-item:hover{
+   .delete-symbol{
+     display: block;
+   }
+ }
+ .delete-symbol{
+   display: none;
+ }
+ .delete-symbol:hover{
+   color: #b21e1e;
+   cursor: pointer;
+   font-size: 28px;
  }
 
 /*//////////////*/
