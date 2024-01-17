@@ -27,7 +27,6 @@ export class AuthService implements OnInit {
     return this._user;
   }
   setUser(value: User) {
-    console.log('set user:', value)
     this._user.next(value);
   }
   getUserAsObservable(): Observable<NonNullable<User>> {

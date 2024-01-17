@@ -43,6 +43,7 @@ export class JobContentComponent implements OnInit{
     }
 
     search() {
+
         this.jobService.searchJobs(this.searchText, this.selectedCategory, this.selectedJobType, this.selectedLocation)
             .subscribe(
                 data => {

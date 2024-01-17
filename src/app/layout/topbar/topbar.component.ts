@@ -13,6 +13,7 @@ export class TopbarComponent implements OnInit, OnChanges {
 
   isLoggedIn: Observable<boolean> = new Observable<boolean>();
   currentUser: Observable<NonNullable<User>> = new Observable<NonNullable<User>>();
+  notiCount: any = 3;
 
   constructor(private authService: AuthService) {
   }

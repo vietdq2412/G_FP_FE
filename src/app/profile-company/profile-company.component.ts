@@ -64,8 +64,7 @@ export class ProfileCompanyComponent implements OnInit {
 
   onLogoSelected(event: any) {
     const file = event.target.files[0];
-    console.log(file)
-    this.fileUploadService.uploadFile(file, this.companyLogoPath).subscribe(downloadURL => {
+    this.fileUploadService.uploadFile(file, this.companyLogoPath, this.company.name + "-logo").subscribe(downloadURL => {
       console.log(`File available at: ${downloadURL}`);
       this.company.logo = downloadURL;
     });

@@ -23,6 +23,7 @@ export class JobDetailComponent implements OnInit {
   isApplied: boolean = false;
   expiredDays: any;
   checkJobAndCompany: boolean = false;
+  checkCompany: boolean = false;
 
   cvs: CV[] = [];
 
@@ -105,6 +106,7 @@ export class JobDetailComponent implements OnInit {
       this.job = data;
       this.expiredDays = this.getDaysDifference(this.job.expiredDate);
       this.checkJobAndCompany = this.accountRole == 'ROLE_COMPANY' && this.job.company?.id == this.profileId;
+      this.checkCompany = this.accountRole == 'ROLE_COMPANY';
     });
 
     this.cvService.getCVsByJobId(this.id).subscribe(cv => {

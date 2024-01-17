@@ -1,8 +1,10 @@
-export class Account{
-  email?:string;
-  password?:string;
+export class Account {
+  id?: number;
+  email?: string;
+  password?: string;
 
-  constructor(email?:string, password?: string) {
+  constructor(id?: number, email?: string, password?: string) {
+    this.id = id;
     this.email = email;
     this.password = password;
   }

@@ -29,8 +29,12 @@ export class JobService {
     getJobs(): Observable<any[]> {
         return this.http.get<any[]>(this.jobsUrl);
     }
+    getJobsAvailable(): Observable<any[]> {
+        return this.http.get<any[]>(this.jobsUrl);
+    }
 
     getJobsByCompanyId(companyId: any): Observable<any[]> {
+
         return this.http.get<any[]>(this.jobsUrl + `/company/${companyId}`);
     }
 
@@ -39,6 +43,7 @@ export class JobService {
     }
 
     addJob(job: Job): Observable<Job> {
+      console.log("abc: url ", this.jobsUrl)
         return this.http.post<Job>(this.jobsUrl, job);
     }
 

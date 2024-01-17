@@ -8,8 +8,8 @@
                 <div class="row">
                 </div>
                 <div class="row">
-                    <div class="col-3">{{cv.appUser?.name}}</div>
-                    <div class="col-9"><a target="_blank" href="{{cv.path}}">view Cv</a></div>
+                    <div class="col-5">{{cv.appUser?.name}}</div>
+                    <div class="col-7"><a target="_blank" href="{{cv.path}}">view Cv</a></div>
                 </div>
             </div>
         </div>
@@ -27,18 +27,19 @@
                             </div>
                         </div>
                         <div class="col-5">
-                            <p style="color:#b99b4e;" *ngIf="isApplied && !checkJobAndCompany">You already applied this
-                                job!</p>
+                            <p style="color:#b99b4e;" *ngIf="isApplied && !checkCompany">You already applied this
+                                job!
+                            </p>
                             <p *ngIf="!isApplied">
                                 <span *ngIf="expiredDays > 1"> {{expiredDays}} days left to apply!</span>
-                                <span *ngIf="expiredDays == 1">{{expiredDays}} day left to apply!</span>
+                                <span *ngIf="expiredDays <= 1 && expiredDays > 0">{{expiredDays}} day left to apply!</span>
                             </p>
-                            <p style="color:#b99b4e;" *ngIf="expiredDays < 0">
+                            <p style="color:#b99b4e;" *ngIf="expiredDays <= 0">
                                 Job expired!
                             </p>
                         </div>
                         <div class="col-2">
-                            <button *ngIf="accountRole=='ROLE_USER' && !isApplied && expiredDays > 0"
+                            <button *ngIf="accountRole=='ROLE_USER' && !isApplied && expiredDays >= 0"
                                     (click)="applyCv()">Apply
                             </button>
                             <div *ngIf="checkJobAndCompany;then companyAction"></div>
@@ -110,10 +111,19 @@
                             <span>{{job.location?.name}}</span>
                         </div>
                     </div>
+                    <div class="detail-item">
+                        <div class="col-2">
+                            <h1><i class="bi bi-geo-alt"></i></h1>
+                        </div>
+                        <div class="col-10">
+                            <strong>Salary:</strong><br>
+                            <span>{{job.salary}}</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row location">
-                    <p>Work location: {{job.address}}</p>
+                    <p>Work at: {{job.address}}</p>
                 </div>
                 <hr>
 

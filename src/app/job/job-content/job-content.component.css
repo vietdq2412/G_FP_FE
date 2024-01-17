@@ -1,6 +1,6 @@
 .job-content {
     border-radius: 8px;
-    height: 330px;
+    height: 500px;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -32,7 +32,6 @@
 
 .job-card {
     display: flex;
-    align-items: center;
     border-bottom: 1px solid #ccc;
     padding: 10px;
 }
@@ -45,12 +44,11 @@
 }
 
 .job-details h2 {
-    margin: 0;
     font-size: 1.1em;
 }
 
-.job-details h6 {
-    font-size: 12px;
+.job-details *{
+    margin: 0;
 }
 
 .job-details p {

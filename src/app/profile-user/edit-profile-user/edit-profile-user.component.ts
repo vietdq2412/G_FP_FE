@@ -44,7 +44,6 @@ export class EditProfileUserComponent implements OnInit {
       name: [this.appUser.name, Validators.required],
       DOB: [this.appUser.DOB, Validators.required],
       address: [this.appUser.address, Validators.required],
-      image: [this.appUser.image],
       gender: [this.appUser.gender, Validators.required],
       phoneNumber: [this.appUser.phoneNumber],
       about: [this.appUser.about],
@@ -53,10 +52,9 @@ export class EditProfileUserComponent implements OnInit {
 
   onAvatarSelected(event: any) {
     const file = event.target.files[0];
-    this.fileUploadService.uploadFile(file, this.appUserAvatarPath).subscribe(downloadURL => {
+    this.fileUploadService.uploadFile(file, this.appUserAvatarPath, this.appUser.name + "-avatar").subscribe(downloadURL => {
       console.log(`File available at: ${downloadURL}`);
       this.appUser.image = downloadURL;
-      this.editForm.value.image = downloadURL;
     });
   }
 
@@ -65,7 +63,6 @@ export class EditProfileUserComponent implements OnInit {
       this.appUser.name = this.editForm.value.name;
       this.appUser.DOB = this.editForm.value.DOB;
       this.appUser.address = this.editForm.value.address;
-      this.appUser.image = this.editForm.value.image;
       this.appUser.gender = this.editForm.value.gender;
       this.appUser.phoneNumber = this.editForm.value.phoneNumber;
       this.appUser.about = this.editForm.value.about;

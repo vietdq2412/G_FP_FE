@@ -16,6 +16,7 @@ export class Job {
     expiredDate?: Date;
     jobCategory?: Set<JobCategory>;
     company?: Company;
+    salary?: string;
 
     constructor(
         id?: number,
@@ -29,7 +30,8 @@ export class Job {
         description?: string,
         expiredDate?: Date,
         jobCategory?: Set<JobCategory>,
-        company?: Company
+        company?: Company,
+        salary?: string
     ) {
         this.id = id;
         this.name = name;
@@ -43,5 +45,6 @@ export class Job {
         this.expiredDate = expiredDate;
         this.jobCategory = jobCategory;
         this.company = company;
+        this.salary = salary;
     }
 }
