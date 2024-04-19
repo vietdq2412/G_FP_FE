@@ -33,37 +33,13 @@
 
           <ul class="dropdown-menu dropdown-notification" aria-labelledby="navbarDropdown">
             <h2> Notifications</h2>
-            <li>
+            <li *ngFor="let noti of notiItems">
               <div class="noti-item">
                 <div class="row">
-                  <div class="col-9"><h4>Title</h4></div>
-                  <div class="col-3"><h5>22/22/2222</h5></div>
+                  <div class="col-9"><h4>{{noti.title}}</h4></div>
+                  <div class="col-3"><h5>{{noti.createdDate?.toDateString()}}</h5></div>
                 </div>
-                <p>sdfsdsdsdsdsdsdsdansjknaskljnkajlsilasbikaskb ksba a ksjl aklajk a a la jksdjkfb k</p>
-              </div>
-            </li>
-            <li>
-              <div class="noti-item">
-                <h4>Title</h4>
-                <p>commt</p>
-              </div>
-            </li>
-            <li>
-              <div class="noti-item">
-                <h4>Title</h4>
-                <p>commt</p>
-              </div>
-            </li>
-            <li>
-              <div class="noti-item">
-                <h4>Title</h4>
-                <p>commt</p>
-              </div>
-            </li>
-            <li>
-              <div class="noti-item">
-                <h4>Title</h4>
-                <p>commt</p>
+                <p>{{noti.comment}}</p>
               </div>
             </li>
 

@@ -1,154 +1,182 @@
 <div class="row">
-    <div class="col-3">
-        <div *ngIf="checkJobAndCompany" class="list-cv">
-            <div class="row">
-                <h2>CV Applied</h2>
-            </div>
-            <div class="row cv-item" *ngFor="let cv of cvs">
-                <div class="row">
-                </div>
-                <div class="row">
-                    <div class="col-5">{{cv.appUser?.name}}</div>
-                    <div class="col-7"><a target="_blank" href="{{cv.path}}">view Cv</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="job-detail-container col-9">
+  <div class="col-3">
+    <div *ngIf="checkJobAndCompany" class="list-cv">
+      <div class="row">
+        <h2>CV Applied</h2>
+      </div>
+      <div class="row cv-item" *ngFor="let cv of cvs">
         <div class="row">
-            <div class="col-">
-                <div class="row">
-                    <h1>{{job.name}}</h1>
-                    <div class="row">
-                        <div class="col-5">
-                            <div class="recruiter-info">
-                                <p>Email: {{job.company?.email}}</p>
-                            </div>
-                        </div>
-                        <div class="col-5">
-                            <p style="color:#b99b4e;" *ngIf="isApplied && !checkCompany">You already applied this
-                                job!
-                            </p>
-                            <p *ngIf="!isApplied">
-                                <span *ngIf="expiredDays > 1"> {{expiredDays}} days left to apply!</span>
-                                <span *ngIf="expiredDays <= 1 && expiredDays > 0">{{expiredDays}} day left to apply!</span>
-                            </p>
-                            <p style="color:#b99b4e;" *ngIf="expiredDays <= 0">
-                                Job expired!
-                            </p>
-                        </div>
-                        <div class="col-2">
-                            <button *ngIf="accountRole=='ROLE_USER' && !isApplied && expiredDays >= 0"
-                                    (click)="applyCv()">Apply
-                            </button>
-                            <div *ngIf="checkJobAndCompany;then companyAction"></div>
-                            <ng-template #companyAction>
-                                <button (click)="openEditJobDialog(job)">Edit</button>
-                            </ng-template>
-                        </div>
+          <div class="col-6 cv-item-content">
+            <p class="cv-user-name">
+              {{cv.appUser?.name}}
+            </p>
+          </div>
+          <div class="col-3 cv-item-content">
+            <p class="cv-user-name">
+              <a target="_blank" href="{{cv.path}}">
+                CV
+              </a>
+          </div>
+          <div class="col-3 reaction" *ngIf="cv.status == 'pending'">
+            <div class="row" (click)="acceptCv(cv.id)">
+              <p>Accept</p>
+            </div>
+            <hr style="margin: 0">
+            <div class="row" (click)="rejectCv(cv.id)">
+              <p>Reject</p>
+            </div>
+          </div>
+          <div class="col-3 reaction" *ngIf="cv.status == 'accepted'">
+            <div class="row" style="color: #34ad22">
+              <p>Accepted</p>
+            </div>
+          </div>
+          <div class="col-3 reaction" *ngIf="cv.status == 'rejected'">
+            <div class="row" style="color: #e02a1a">
+              <p>Rejected</p>
+            </div>
+          </div>
 
-                    </div>
-                </div>
 
-                <hr>
-                <div class="row job-detail">
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-calendar4"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Job Type:</strong><br>
-                            <span>Full Time</span>
-                        </div>
-                    </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-bar-chart-line"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Job Level:</strong><br>
-                            <span>{{job.jobLevel}}</span>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-clock-history"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Job Experience:</strong><br>
-                            <span>{{job.requiredExperience}}</span>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-suitcase-lg"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Job Category:</strong><br>
-                            <span>
+  <div class="job-detail-container col-9">
+    <div class="row">
+      <div class="col-">
+        <div class="row">
+          <h1>{{job.name}}</h1>
+          <div class="row">
+            <div class="col-5">
+              <div class="recruiter-info">
+                <p>Email: {{job.company?.email}}</p>
+              </div>
+            </div>
+            <div class="col-5">
+              <p style="color:#b99b4e;" *ngIf="isApplied && !checkCompany">You already applied this
+                job!
+              </p>
+              <p *ngIf="!isApplied">
+                <span *ngIf="expiredDays > 1"> {{expiredDays}} days left to apply!</span>
+                <span *ngIf="expiredDays <= 1 && expiredDays > 0">{{expiredDays}} day left to apply!</span>
+              </p>
+              <p style="color:#b99b4e;" *ngIf="expiredDays <= 0">
+                Job expired!
+              </p>
+            </div>
+            <div class="col-2">
+              <button *ngIf="accountRole=='ROLE_USER' && !isApplied && expiredDays >= 0"
+                      (click)="applyCv()">Apply
+              </button>
+              <div *ngIf="checkJobAndCompany;then companyAction"></div>
+              <ng-template #companyAction>
+                <button (click)="openEditJobDialog(job)">Edit</button>
+              </ng-template>
+            </div>
+
+          </div>
+        </div>
+
+        <hr>
+        <div class="row job-detail">
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-calendar4"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Job Type:</strong><br>
+              <span>Full Time</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-bar-chart-line"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Job Level:</strong><br>
+              <span>{{job.jobLevel}}</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-clock-history"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Job Experience:</strong><br>
+              <span>{{job.requiredExperience}}</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-suitcase-lg"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Job Category:</strong><br>
+              <span>
                                 <i *ngFor="let cat of job.jobCategory">
                                         {{cat.name}},</i>
                             </span>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-mortarboard"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Educational:</strong><br>
-                            <span>{{job.requiredEducation}}</span>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-geo-alt"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Location:</strong><br>
-                            <span>{{job.location?.name}}</span>
-                        </div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="col-2">
-                            <h1><i class="bi bi-geo-alt"></i></h1>
-                        </div>
-                        <div class="col-10">
-                            <strong>Salary:</strong><br>
-                            <span>{{job.salary}}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row location">
-                    <p>Work at: {{job.address}}</p>
-                </div>
-                <hr>
-
-                <div class="row about-company">
-                    <h2>About Company</h2>
-                    <div class="row">
-                        <div class="col-1">
-                            <img src="{{job.company?.logo}}" alt="" width="40px" height="40px">
-                        </div>
-                        <div class="col-8">
-                            <h3><strong>{{job.company?.name}}</strong></h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        {{job.company?.about}}
-                    </div>
-                </div>
-                <div class="job-responsibilities">
-                    <h2>Job Responsibilities</h2>
-                    <div>
-                        {{job.description}}
-                    </div>
-                </div>
             </div>
+          </div>
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-mortarboard"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Educational:</strong><br>
+              <span>{{job.requiredEducation}}</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-geo-alt"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Location:</strong><br>
+              <span>{{job.location?.name}}</span>
+            </div>
+          </div>
+          <div class="detail-item">
+            <div class="col-2">
+              <h1><i class="bi bi-geo-alt"></i></h1>
+            </div>
+            <div class="col-10">
+              <strong>Salary:</strong><br>
+              <span>{{job.salary}}</span>
+            </div>
+          </div>
         </div>
+
+        <div class="row location">
+          <p>Work at: {{job.address}}</p>
+        </div>
+        <hr>
+
+        <div class="row about-company">
+          <h2>About Company</h2>
+          <div class="row">
+            <div class="col-1">
+              <img src="{{job.company?.logo}}" alt="" width="40px" height="40px">
+            </div>
+            <div class="col-8">
+              <h3><strong>{{job.company?.name}}</strong></h3>
+            </div>
+          </div>
+          <div class="row">
+            {{job.company?.about}}
+          </div>
+        </div>
+        <div class="job-responsibilities">
+          <h2>Job Responsibilities</h2>
+          <div>
+            {{job.description}}
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
 </div>

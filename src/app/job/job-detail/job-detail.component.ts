@@ -66,7 +66,8 @@ export class JobDetailComponent implements OnInit {
       panelClass: "ApplyCvDialog",
       data: {
         jobId: this.job.id,
-        profileId: this.profileId
+        profileId: this.profileId,
+        from: JSON.parse(localStorage.getItem("userPrinciple")!).username
       }
     });
 
@@ -133,5 +134,17 @@ export class JobDetailComponent implements OnInit {
     const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
 
     return differenceInDays;
+  }
+
+  acceptCv(id:any) {
+    this.cvService.acceptCv(id).subscribe(cv =>{
+      console.log(cv)
+    });
+  }
+
+  rejectCv(id:any) {
+    this.cvService.rejectCv(id).subscribe(cv =>{
+      console.log(cv)
+    });
   }
 }

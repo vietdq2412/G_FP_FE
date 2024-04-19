@@ -17,6 +17,12 @@ export class CvService {
     return this.http.post<CV>(this.cvUrl, cv);
   }
 
+  acceptCv(cvId: any): Observable<any> {
+    return this.http.get<any>(this.cvUrl + `/accept/${cvId}`);
+  }
+  rejectCv(cvId: any): Observable<any> {
+    return this.http.get<any>(this.cvUrl + `/reject/${cvId}`);
+  }
   getCVsByJobId(jobId: any): Observable<any[]> {
     return this.http.get<any[]>(this.cvUrl + `/job/${jobId}`);
   }

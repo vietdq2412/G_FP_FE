@@ -25,7 +25,7 @@ export class JobContentComponent implements OnInit{
     }
     ngOnInit(): void {
         let id = localStorage.getItem('profileId');
-        this.jobService.getJobs().subscribe(
+        this.jobService.getAvailableJobs().subscribe(
             (data) => {
                 this.jobs = data
                 console.log("lis jobs", this.jobs)

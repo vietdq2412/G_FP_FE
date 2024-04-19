@@ -36,8 +36,8 @@
   position: absolute;
   left: -390px;
   width: fit-content;
-  padding: 5px;
-  height: 350px;
+  padding: 20px;
+  max-height: 350px;
   background-color: #e0e0e0;
 
   overflow-y: scroll;

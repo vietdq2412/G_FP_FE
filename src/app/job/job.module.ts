@@ -10,6 +10,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ApplyCVFormComponent } from './job-detail/apply-cv-form/apply-cv-form.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -27,7 +30,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatDialogModule,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ]
 })
 export class JobModule { }

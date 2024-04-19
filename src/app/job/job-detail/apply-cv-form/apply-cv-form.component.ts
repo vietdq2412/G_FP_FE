@@ -35,8 +35,8 @@ export class ApplyCVFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cv.appUser = {id: this.data.profileId};
-    this.cv.job = {id: this.data.jobId};
+    this.cv.appUser = {id: this.data.profileId, name: this.data.from};
+    this.cv.job = {id: this.data.jobId, name: this.data.name};
 
     this.progressSubscription = this.fileUploadService.currentProgress.subscribe(
       progress => this.uploadProgress = progress

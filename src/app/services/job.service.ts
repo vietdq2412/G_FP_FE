@@ -26,8 +26,8 @@ export class JobService {
         return this.http.get<any[]>(this.jobsUrl + '/jobTypes');
     }
 
-    getJobs(): Observable<any[]> {
-        return this.http.get<any[]>(this.jobsUrl);
+    getAvailableJobs(): Observable<any[]> {
+        return this.http.get<any[]>(this.jobsUrl + '/available');
     }
     getJobsAvailable(): Observable<any[]> {
         return this.http.get<any[]>(this.jobsUrl);

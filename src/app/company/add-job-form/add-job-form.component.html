@@ -13,13 +13,15 @@
 
     <!-- Job Categories -->
     <div class="form-group">
-      <label for="jobCategory">Job Category <span class="requiredIcon">*</span></label>
-      <select formControlName="jobCategory" id="jobCategory" class="form-control" multiple required>
-        <option *ngFor="let category of jobCategories" [ngValue]="category">{{ category.name }}</option>
-      </select>
-      <div *ngIf="jobForm.controls['jobCategory'].invalid && jobForm.controls['jobCategory'].touched" class="error">
-        At least one Job Category is required.
-      </div>
+      <mat-form-field >
+        <mat-label>Job Category</mat-label>
+        <mat-select formControlName="jobCategory" multiple>
+          <mat-option *ngFor="let category of jobCategories" [value]="category.id">{{ category.name }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="jobForm.controls['jobCategory'].invalid && jobForm.controls['jobCategory'].touched">
+          At least one Job Category is required.
+        </mat-error>
+      </mat-form-field>
     </div>
 
     <!-- Job Level -->
